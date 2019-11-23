@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Paper, TextField } from '@material-ui/core';
 class SearchBar extends React.Component {
     state = {
         searchTerm: ' ',
@@ -7,9 +8,11 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>This is the searchbar component</h1>
-            </div>
+           <Paper elevation={6} style={{ padding: '25px' }}>
+                <form>
+                    <TextField fullWidth label="Search..." ></TextField>
+                </form>
+           </Paper>
         )
     }
 }
