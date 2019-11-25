@@ -10,6 +10,10 @@ class App extends React.Component {
     selectedVideo: null
   };
 
+  componentDidMount() {
+      this.handleSubmit('MERN stack')
+  }
+
   handleSubmit = async searchTerm => {
     const response = await youtube.get("search", {
       params: {
@@ -26,9 +30,9 @@ class App extends React.Component {
     });
   };
 
-  onSelectVideo = () => {
-
-  }
+  onVideoSelect = (video) => {
+    this.setState({ selectedVideo: video });
+  };
 
   render() {
     const { selectedVideo, videos } = this.state;
@@ -40,13 +44,10 @@ class App extends React.Component {
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail
-                video={selectedVideo}
-                onVideoSelect={this.onVideoSelect}
-              />
+              <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              <VideoList videos={videos} />
+              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
             </Grid>
           </Grid>
         </Grid>
