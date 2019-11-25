@@ -6,11 +6,23 @@ class SearchBar extends React.Component {
         searchTerm: ' ',
     }
 
+    handleChange = (event) => this.setState({ searchTerm: event.target.value });
+
+    handleSubmit = (event) =>{
+        const { searchTerm } = this.state;
+        const { onFormSubmit } = this.props;
+
+        onFormSubmit(searchTerm);
+
+         event.preventDefault();
+         this.setState({  searchTerm: '  ' })
+     }
+    
     render() {
         return (
            <Paper elevation={6} style={{ padding: '25px' }}>
-                <form>
-                    <TextField fullWidth label="Search..." ></TextField>
+                <form onSubmit={this.handleSubmit}>
+                    <TextField fullWidth label="Search..." onChange={this.handleChange} />
                 </form>
            </Paper>
         )
