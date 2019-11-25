@@ -11,7 +11,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-      this.handleSubmit('MERN stack')
+      this.handleSubmit('JavaScript Tutorial')
   }
 
   handleSubmit = async searchTerm => {
